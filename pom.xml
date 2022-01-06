@@ -61,7 +61,7 @@
             <artifactId>small-jdb</artifactId>
             <scope>system</scope>
             <version>0.0.1-SNAPSHOT</version>
-            <systemPath>${project.basedir}/lib/small-jdbc-0.0.1-SNAPSHOT.jar</systemPath>
+            <systemPath>${project.basedir}/bin/small-jdbc-0.0.1-SNAPSHOT.jar</systemPath>
         </dependency>
 
     </dependencies>
