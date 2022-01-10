@@ -6,30 +6,39 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- * @author ouyangchao <ouyangchao@kuaishou.com>
- * Created on 2021-12-21
- */
-public class jdbc {
+import org.junit.jupiter.api.Test;
 
-    public static void main(String[] args) {
+
+/**
+ * 加载驱动的示例
+ * */
+class LoadDriverV2Tests {
+
+
+    @Test
+    void contextLoads() {
         Connection conn = null;
         Statement stmt = null;
         try {
-            conn = DriverManager
-                    .getConnection("jdbc:mysql://127.0.0.1:3306/test", "root",
-                            "root");
+
+            //通过系统变量注册
+            System.setProperty("jdbc.drivers","com.smalljdbc.smalljdbc.SmallDriver");
+
+            //加载自己的驱动
+            conn = DriverManager.getConnection("jdbc:myapp://127.0.0.1:3306/test", "root", "root");
 
             stmt = conn.createStatement();
 
-            String sql = "SELECT * FROM user where id =1";
+            String sql = "query 1";
 
             ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
-                System.out.print(rs.getString("name"));
+                System.out.print(rs.getString("name")+"\n");
             }
+
             rs.close();
+
         } catch (SQLException se) {
             se.printStackTrace();
         } catch (Exception e) {
@@ -50,4 +59,5 @@ public class jdbc {
             }
         }
     }
+
 }

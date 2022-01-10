@@ -56,6 +56,7 @@ public class SmallDataSourceV1 implements DataSource {
 
     @Override
     public Connection getConnection() throws SQLException {
+        // 驱动初始化
         this.initializeDriver();
 
         Properties props = new Properties();
