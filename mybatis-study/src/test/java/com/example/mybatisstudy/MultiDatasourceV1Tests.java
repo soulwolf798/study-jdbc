@@ -11,7 +11,7 @@ import com.example.mybatisstudy.model.User;
 
 
 @SpringBootTest
- class MultiDatasourceTests {
+ class MultiDatasourceV1Tests {
 
     @Autowired
     private UserMapper userMapper;
@@ -22,9 +22,9 @@ import com.example.mybatisstudy.model.User;
         /**
         * 没有添加注解的
         * */
-        DynamicDataSourceContextHolder.setContextKey(DataSourceConstants.DS_KEY_MASTER);
+        DynamicDataSourceContextHolder.setContextKey(DataSourceConstants.DS_KEY_SLAVE);
 
-        User user = userMapper.selectOne(1);
+        User user = userMapper.selectOne(3);
 
         System.out.print(user);
     }

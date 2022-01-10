@@ -25,10 +25,13 @@ class SamllDataSourceV2Tests {
         Statement stmt = null;
         try {
 
+            System.out.print("数据源初始info\n");
             dataSource.printInfo();
 
             // （3）加载自己的驱动
             conn = dataSource.getConnection();
+
+            System.out.print("数据源获取一个链接后info\n");
 
             dataSource.printInfo();
 
@@ -54,6 +57,7 @@ class SamllDataSourceV2Tests {
                 if (stmt != null) {
                     conn.close();
                     //关闭连接
+                    System.out.print("数据源关闭链接后info\n");
                     dataSource.printInfo();
                 }
             } catch (SQLException se) {
